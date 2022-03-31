@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    flatDir {
+        dirs 'lib'
+    }
+}
+
+jar {
+    baseName("PashkovLib")
+    version("13")
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    // https://mvnrepository.com/artifact/joda-time/joda-time
+    implementation 'joda-time:joda-time:2.10.14'
+    implementation files('lib/MinMaxMathLib-4.jar')
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task printStart{
+    print ("This is the project done in Gradle as the homework by Pashkov Alexey")
+}
+
+application {
+    mainClassName("ru.listProcessApp/MainApp")
+}
+
